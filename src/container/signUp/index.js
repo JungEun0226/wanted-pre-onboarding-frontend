@@ -13,7 +13,7 @@ import values from '../../values';
 export const Wrapper = styled.div`
   width: 500px;
 
-  margin: 50% auto;
+  margin: 100px auto;
 
   .wrapper-header {
     text-align: center;

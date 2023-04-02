@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import SignInComponent from '../container/signIn';
 import SignUpComponent from '../container/signUp';
@@ -13,17 +13,21 @@ const App = () => {
             <Route
                 path={'/' || ''}
                 Component={() => {
-                    if (utils().isLoggedIn()) {
-                        return <TodoComponent />;
+                    const isLogin = !!utils().isLoggedIn();
+
+                    if (isLogin) {
+                        return <Navigate to="/todo" replace />;
                     }
-                    return <SignInComponent />;
+                    return <Navigate to="/signin" replace />;
                 }}
             />
             <Route
                 path={'/signin'}
                 Component={() => {
-                    if (utils().isLoggedIn()) {
-                        return <TodoComponent />;
+                    const isLogin = !!utils().isLoggedIn();
+
+                    if (isLogin) {
+                        return <Navigate to="/todo" replace />;
                     }
                     return <SignInComponent />;
                 }}
@@ -31,8 +35,10 @@ const App = () => {
             <Route
                 path={'/signup'}
                 Component={() => {
-                    if (utils().isLoggedIn()) {
-                        return <TodoComponent />;
+                    const isLogin = !!utils().isLoggedIn();
+
+                    if (isLogin) {
+                        return <Navigate to="/todo" replace />;
                     }
                     return <SignUpComponent />;
                 }}
@@ -40,10 +46,12 @@ const App = () => {
             <Route
                 path={'/todo'}
                 Component={() => {
-                    if (utils().isLoggedIn()) {
+                    const isLogin = !!utils().isLoggedIn();
+
+                    if (isLogin) {
                         return <TodoComponent />;
                     }
-                    return <SignInComponent />;
+                    return <Navigate to="/signin" replace />;
                 }}
             />
         </Routes>
