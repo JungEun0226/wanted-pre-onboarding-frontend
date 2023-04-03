@@ -101,12 +101,12 @@ const SignInComponent = () => {
                         );
                         if (response.statusCode !== Number(values.successCode)) {
                             message.error({
-                                content: response.message,
+                                content: response.data.message,
                             });
                             return;
                         }
 
-                        utils().updateLocal(values.tokenKey, response.access_token);
+                        utils().updateLocal(values.tokenKey, response.data.access_token);
 
                         navigate('/todo');
                     }}

@@ -6,8 +6,9 @@
 https://github.com/JungEun0226/wanted-pre-onboarding-frontend.git
 
 ## 추가 라이브러리
-- react-router = router 기능을 위해 추가했습니다.
-- antd = UI 컴포넌트를 위해 추가했습니다.
+- react-router = router 기능을 위해 추가했습니다. https://reactrouter.com/en/main
+- antd = UI 컴포넌트를 위해 추가했습니다. https://ant.design/components/overview/
+- styled-component = css를 위해 추가했습니다. https://styled-components.com/docs 
 
 ## 프로젝트의 실행 방법
 ### `npm start`

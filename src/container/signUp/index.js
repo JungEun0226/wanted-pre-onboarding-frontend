@@ -93,7 +93,7 @@ const SignUpComponent = () => {
                         );
                         if (response.statusCode !== Number(values.successCode)) {
                             message.error({
-                                content: response.message,
+                                content: response.data.message,
                             });
                             return;
                         }

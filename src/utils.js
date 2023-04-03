@@ -34,37 +34,68 @@ const utils = () => {
     };
 
     // fetch
-    const _fetch = async (url, body, method) => {
+    const _fetch = async (url, body, method, isBearer, notUseContentType) => {
         try {
-            const apiHost = 'https://pre-onboarding-selection-task.shop';
+            // const apiHost = 'https://pre-onboarding-selection-task.shop';
+            const apiHost = 'http://localhost:8000';
+
+            const opt = {
+                method: method || 'get',
+                headers: {
+                    // 'Content-Type': 'application/json',
+                },
+            };
+            if (body && Object.keys(body).length > 0) {
+                opt.body = JSON.stringify(body);
+            }
+            if (isBearer) {
+                opt.headers.Authorization = `Bearer ${utils().readLocal(values.tokenKey)}`;
+            }
+            if (!notUseContentType) {
+                opt.headers['Content-Type'] = 'application/json';
+            }
+
             const response = await fetch(
                 `${apiHost}${url}`,
-                {
-                    method: method || 'get',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: body ? JSON.stringify(body) : '',
-                }
+                opt,
             );
 
-            if (response.status === 201) {
-                return {
-                    statusCode: Number(values.successCode),
-                };
+            if (response.status === 201 || response.status === 204) {
+                try {
+                    const res = await response.json();
+                    return {
+                        statusCode: Number(values.successCode),
+                        data: res,
+                    };
+                } catch (err) {
+                    console.log('no response data');
+                    return {
+                        statusCode: Number(values.successCode),
+                    };
+                }
             }
 
             if (response.status === 200) {
                 const res = await response.json();
                 return {
-                    ...res,
+                    data: res,
                     statusCode: Number(values.successCode),
                 };
             }
 
-            return await response.json();
+            const res = await response.json();
+            return {
+                data: res,
+                statusCode: 404,
+            };
         } catch (err) {
             console.error('[utils-_fecth] error', err);
+            return {
+                data: {
+                    message: '네트워크 오류입니다.',
+                },
+                statusCode: 404,
+            };
         }
     };
 

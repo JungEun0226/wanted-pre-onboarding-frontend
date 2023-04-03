@@ -54,6 +54,18 @@ const App = () => {
                     return <Navigate to="/signin" replace />;
                 }}
             />
+            {/* default router */}
+            <Route
+                path={'*'}
+                Component={() => {
+                    const isLogin = !!utils().isLoggedIn();
+
+                    if (isLogin) {
+                        return <Navigate to="/todo" replace />;
+                    }
+                    return <Navigate to="/signin" replace />;
+                }}
+            />
         </Routes>
     );
 };
