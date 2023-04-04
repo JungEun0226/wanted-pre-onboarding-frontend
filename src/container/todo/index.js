@@ -118,7 +118,7 @@ const handleUpdateTodo = async (item, newTodo, checked) => {
     if (newTodo) {
         body.todo = newTodo;
     }
-    if (checked) {
+    if (typeof checked === 'boolean') {
         body.isCompleted = checked;
     }
     const response = await utils()._fetch(
