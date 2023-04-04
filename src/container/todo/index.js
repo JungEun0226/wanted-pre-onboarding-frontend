@@ -209,7 +209,7 @@ const TodoComponent = () => {
                 });
             });
 
-            newList.sort((a, b) => b - a);
+            newList.sort((a, b) => b.id - a.id);
             setList(newList);
         };
         getList();
