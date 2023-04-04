@@ -36,8 +36,8 @@ const utils = () => {
     // fetch
     const _fetch = async (url, body, method, isBearer, notUseContentType) => {
         try {
-            // const apiHost = 'https://pre-onboarding-selection-task.shop';
-            const apiHost = 'http://localhost:8000';
+            const apiHost = 'https://pre-onboarding-selection-task.shop';
+            // const apiHost = 'http://localhost:8000';
 
             const opt = {
                 method: method || 'get',
