@@ -245,7 +245,11 @@ const TodoComponent = () => {
                             const response = await handleCreateTodo(newTodo);
                             if (response.succ) {
                                 setList([
-                                    response.data,
+                                    {
+                                        ...response.data,
+                                        isEdit: false,
+                                        origTodo: response.data.todo,
+                                    },
                                     ...list,
                                 ]);
                                 setNewTodo('');
