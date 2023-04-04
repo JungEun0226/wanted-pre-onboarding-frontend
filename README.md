@@ -18,10 +18,11 @@ https://github.com/JungEun0226/wanted-pre-onboarding-frontend.git
 
 ## 데모 영상 링크
 
-### `npm start`
+https://photos.app.goo.gl/7bAfadEVyZMNhpvB8
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+영상 속 순서는 아래와 같습니다.
+1. 회원가입
+2. 로그인 
+3. todo 등록/수정/삭제 
+4. 새로고침시 todo 정보가 남아있는지 
+5. 로그인 여부에 따른 리다이렉트 처리
